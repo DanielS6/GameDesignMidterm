@@ -1,0 +1,12 @@
+root = true
+# Editor config - LF line endings, no trailing whitespace on each line,
+# but require trailing newline at the end
+
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Virtual file for editing the current commit message
+[ATOM_COMMIT_EDITMSG]
+insert_final_newline = false
