@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 public class PlayerController : MonoBehaviour {
 
@@ -11,23 +10,16 @@ public class PlayerController : MonoBehaviour {
     private float movementX;
     private float movementY;
 
-    // User display
-    public TextMeshProUGUI countText;
-    public GameObject winTextObject;
-
     // Actual moving object
     private Rigidbody playerRigidBody;
 
-    // Number of collected items so far
-    private int count;
+    // Number of collected items currently carrying
+    public int inventoryCount;
 
     // Start is called before the first frame update
     void Start() {
         playerRigidBody = GetComponent<Rigidbody>();
-        count = 0;
-
-        SetCountText();
-        winTextObject.SetActive(false);
+        inventoryCount = 0;
     }
 
     void OnMove(InputValue movementValue) {
@@ -66,18 +58,10 @@ public class PlayerController : MonoBehaviour {
         playerRigidBody.AddForce(movement * speed);
     }
 
-    void SetCountText() {
-        countText.text = "Count: " + count.ToString();
-        if (count >= 16) {
-            winTextObject.SetActive(true);
-        }
-    }
-
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Nectar")) {
             Destroy(other.gameObject);
-            count += 1;
-            SetCountText();
+            inventoryCount += 1;
         }
     }
 }

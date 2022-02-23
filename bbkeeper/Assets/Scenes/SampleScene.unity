@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 2128079710}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1764,8 +1764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  countText: {fileID: 1518169167}
-  winTextObject: {fileID: 1854461303}
+  inventoryCount: 0
 --- !u!114 &2128079711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,5 +1907,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6173973881076992137, guid: 36ca62e9f460c56408ab50da15c6f25b, type: 3}
+      propertyPath: countText
+      value: 
+      objectReference: {fileID: 1518169167}
+    - target: {fileID: 6173973881076992137, guid: 36ca62e9f460c56408ab50da15c6f25b, type: 3}
+      propertyPath: winTextObject
+      value: 
+      objectReference: {fileID: 1854461303}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 36ca62e9f460c56408ab50da15c6f25b, type: 3}
