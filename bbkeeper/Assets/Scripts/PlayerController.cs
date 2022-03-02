@@ -34,17 +34,17 @@ public class PlayerController : MonoBehaviour {
 
     private void updateLookDirection(float lookX, float lookY) {
         // For each direction, the looX, lookY, and desired rotation are:
-        // Up arrow: 0, 1, 90
-        // down arrow: 0, -1, -90
-        // right arrow: 1, 0, 180
-        // left arrow: -1, 0, 0
+        // Up arrow: 0, 1, 0
+        // down arrow: 0, -1, 180
+        // right arrow: 1, 0, 90
+        // left arrow: -1, 0, -90
         float yRotation;
         if (lookX == 0) {
             // up or down
-            yRotation = (lookY == 1 ? 90.0f : -90.0f);
+            yRotation = (lookY == 1 ? 0.0f : 180.0f);
         } else {
             // left or right
-            yRotation = (lookX == 1 ? 180.0f : 0.0f);
+            yRotation = (lookX == 1 ? 90.0f : -90.0f);
         }
         // reset, so that the rotation is relative to starting 0/0/0 instead
         // of relative to the current orientation
