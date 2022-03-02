@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Hive : MonoBehaviour {
 
     // User display
     public TextMeshProUGUI countText;
-    public GameObject winTextObject;
 
     // Number of collected items so far
     private int collectedCount;
@@ -17,13 +17,12 @@ public class Hive : MonoBehaviour {
         collectedCount = 0;
 
         SetCountText();
-        winTextObject.SetActive(false);
     }
 
     void SetCountText() {
         countText.text = "Count: " + collectedCount.ToString();
         if (collectedCount >= 16) {
-            winTextObject.SetActive(true);
+            SceneManager.LoadScene("VictoryScene");
         }
     }
 
