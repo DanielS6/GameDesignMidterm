@@ -20,7 +20,7 @@ public class Hive : MonoBehaviour {
     }
 
     void SetCountText() {
-        countText.text = "Count: " + collectedCount.ToString();
+        countText.text = "Total Nectar: " + collectedCount.ToString();
         if (collectedCount >= 16) {
             SceneManager.LoadScene("VictoryScene");
         }

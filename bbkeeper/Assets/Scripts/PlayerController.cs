@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour {
+
+    // User display
+    public TextMeshProUGUI inventoryText;
 
     // Movement
     public float speed = 0;
@@ -15,11 +19,18 @@ public class PlayerController : MonoBehaviour {
 
     // Number of collected items currently carrying
     public int inventoryCount;
+    private int inventoryCapacity = 5;
 
     // Start is called before the first frame update
     void Start() {
         playerRigidBody = GetComponent<Rigidbody>();
         inventoryCount = 0;
+
+        SetInventoryText();
+    }
+
+    void SetInventoryText() {
+        inventoryText.text = "Inventory: " + inventoryCount.ToString() + "/5";
     }
 
     void OnMove(InputValue movementValue) {
@@ -60,8 +71,12 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Nectar")) {
+            if (inventoryCount == inventoryCapacity) {
+                return;
+            }
             Destroy(other.gameObject);
             inventoryCount += 1;
+            SetInventoryText();
         }
     }
 }
