@@ -21,9 +21,9 @@ public class Hive : MonoBehaviour {
 
     void SetCountText() {
         countText.text = "Total Nectar: " + collectedCount.ToString();
-        if (collectedCount >= 16) {
-            SceneManager.LoadScene("VictoryScene");
-        }
+        // if (collectedCount >= 16) {
+        //     SceneManager.LoadScene("VictoryScene");
+        // }
     }
 
     private void OnTriggerEnter(Collider other) {
