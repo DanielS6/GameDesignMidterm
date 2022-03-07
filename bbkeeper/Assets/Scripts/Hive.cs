@@ -10,18 +10,20 @@ public class Hive : MonoBehaviour {
     public TextMeshProUGUI countText;
 
     // Number of collected items so far
-    private int collectedCount;
+    public static int score = 0;
 
     // Start is called before the first frame update
     void Start() {
-        collectedCount = 0;
+        score = 0;
 
         SetCountText();
     }
 
     void SetCountText() {
-        countText.text = "Total Nectar: " + collectedCount.ToString();
-        // if (collectedCount >= 16) {
+        countText.text = "Total Nectar: " + score.ToString();
+
+        // changed end condition to be timer instead of nectar amount
+        // if (score >= 16) {
         //     SceneManager.LoadScene("VictoryScene");
         // }
     }
@@ -29,7 +31,7 @@ public class Hive : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             PlayerController bee = other.GetComponent<PlayerController>();
-            collectedCount += bee.inventoryCount;
+            score += bee.inventoryCount;
             bee.inventoryCount = 0;
             SetCountText();
         }

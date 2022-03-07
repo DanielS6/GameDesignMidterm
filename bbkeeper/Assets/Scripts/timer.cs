@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 60;
     public bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
+    
     private void Start()
     {
         // Starts the timer automatically
