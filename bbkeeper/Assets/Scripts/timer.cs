@@ -5,11 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Timer : MonoBehaviour
+public class timer : MonoBehaviour
 {
     public float timeRemaining = 60;
     public bool timerIsRunning = false;
-    public TextMeshProUGUI timeText;
+    public TMP_Text timeText;
     
     private void Start()
     {
