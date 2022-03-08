@@ -32,7 +32,11 @@ public class Hive : MonoBehaviour {
         if (other.gameObject.CompareTag("Player")) {
             PlayerController bee = other.GetComponent<PlayerController>();
             score += bee.inventoryCount;
+            // All nectars carried by the bee are added to the hive
             bee.inventoryCount = 0;
+            // update inventory text
+            bee.SetInventoryText();
+            // update total count text
             SetCountText();
         }
     }

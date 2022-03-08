@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour {
         SetInventoryText();
     }
 
-    void SetInventoryText() {
+    // Public to allow hive to reset when inventory is dropped off
+    public void SetInventoryText() {
         inventoryText.text = "Inventory: " + inventoryCount.ToString() + "/5";
     }
 
