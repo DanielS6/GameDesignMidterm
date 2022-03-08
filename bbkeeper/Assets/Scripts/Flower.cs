@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour {
 
-    // Prefab of nectar to create, for now just a placeholder
+    // Prefab of nectar to create
     public GameObject nectarPrefab;
 
-    // Timing the random nectar creation, for now a nectar is created every
-    // 5 seconds
-    // public float nectarMaxDelay = 2.0f;
+    // Timing the random nectar creation, somewhere between 2 and 5 seconds
+    // after which the nectar should be created
+    private float nectarCreationDelay;
+    // Timing the random nectar creation, time since last created
     private float nectarTimer;
 
     // Directions around the flower to create new nectar, multiplied by a
     // random magnitute
     private Vector3[] creationDirections = new Vector3[8];
 
-    // Initialize creationPoints on startup
     void Start() {
+        // Initialize creationDirections
         creationDirections[0] = new Vector3(0.0f, 0.0f, 1.0f);
         creationDirections[1] = new Vector3(1.0f, 0.0f, 1.0f);
         creationDirections[2] = new Vector3(1.0f, 0.0f, 0.0f);
@@ -26,15 +27,20 @@ public class Flower : MonoBehaviour {
         creationDirections[5] = new Vector3(-1.0f, 0.0f, -1.0f);
         creationDirections[6] = new Vector3(-1.0f, 0.0f, 0.0f);
         creationDirections[7] = new Vector3(-1.0f, 0.0f, 1.0f);
+        // Created 0 seconds ago, i.e. start timing from now
+        nectarTimer = 0.0f;
+        // How long before the next nectar is created
+        nectarCreationDelay = Random.Range(2.0f, 5.0f);
     }
 
     void FixedUpdate() {
-        // float timeToCreate = Random.Range(0, nectarMaxDelay);
         nectarTimer += 0.01f;
-        // for now a nectar is created every 5 seconds
-        if (nectarTimer > 5.0f) {
+        // check if its been long enough
+        if (nectarTimer > nectarCreationDelay) {
             createNewNectar();
-            nectarTimer = 0f;
+            // Reset timer, randomize new delay
+            nectarTimer = 0.0f;
+            nectarCreationDelay = Random.Range(2.0f, 5.0f);
         }
     }
 
