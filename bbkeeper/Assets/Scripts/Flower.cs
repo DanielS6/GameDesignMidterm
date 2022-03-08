@@ -44,9 +44,15 @@ public class Flower : MonoBehaviour {
         int creationDirNum = Random.Range(0, 7);
         Vector3 creationDirection = creationDirections[creationDirNum];
         float creationAmplitude = Random.Range(1.0f, 3.0f);
+        // Don't create underground, move to y=.6 always, at this height it
+        // collides with the bee
+        Vector3 creationPosition = transform.position + (
+            creationDirection * creationAmplitude
+        );
+        creationPosition.y = 0.6f;
         Instantiate(
             nectarPrefab,
-            transform.position + (creationDirection * creationAmplitude),
+            creationPosition,
             Quaternion.identity // no rotation
         );
     }
